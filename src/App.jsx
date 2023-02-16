@@ -1,20 +1,24 @@
 import "./App.css";
-import responseMovies from "./mocks/with-results.json";
+import responseResults from "./mocks/with-results.json";
 import withoutResults from "./mocks/no-results.json";
+import { Movies } from "./components/Movies";
 
 const App = () => {
-  const movies = responseMovies.Search;
-  const hasMovies = movies?.length > 0;
+  const movies = responseResults.Search;
 
   return (
-    <div>
+    <div className="page">
+      <h1>Buscador de peliculas</h1>
       <header>
         <form className="form">
-          <input type="text" placeholder="Avengers, StarWars, The Matrix..." />
-          <button>Buscar</button>
+          <input type="text" placeholder="Avengers,Star Wars, The Matrix" />
+          <button type="submit">Buscar</button>
         </form>
       </header>
-      <main></main>
+
+      <main>
+        <Movies movies={movies} />
+      </main>
     </div>
   );
 };
